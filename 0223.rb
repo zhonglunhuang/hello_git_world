@@ -17,11 +17,21 @@ books = Nokogiri::HTML(URI.open('https://www.tenlong.com.tw/zh_tw/recent_bestsel
 
 book_name = books.css(".single-book > .title > a")
 book_pricing = books.css(".single-book > .pricing > del")
-# book_link = books.css(".single-book > .title > .a > href")
+book_newpricing = books.css(".single-book > .pricing ")
 
 count = 0
 while book_name[count] != nil
     puts "這本「#{book_name[count].content}」的原價為#{book_pricing[count].content}"
     count += 1
 end
-p book_link[1].content
+p book_newpricing[1].content
+
+
+# str = URI.open('https://www.tenlong.com.tw/zh_tw/recent_bestselling?range=7')
+# doc = Nokogiri::HTML(str)
+# cve = doc.xpath("//body//div//ul//li//a")[0]
+# namespaces = cve.namespaces
+# p namespaces["href"]
+# p cve[10]
+
+
